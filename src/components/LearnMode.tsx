@@ -286,9 +286,10 @@ export default function LearnMode() {
   };
 
   const pillClass = (idx: number) => {
-    if (idx < phase) return "clay-inset px-3 py-1 rounded-full text-[10px] tracking-widest uppercase font-bold text-muted-foreground/40 line-through";
-    if (idx === phase) return "clay-inset px-3 py-1 rounded-full text-[10px] tracking-widest uppercase font-bold text-primary border border-primary/30 bg-primary/10";
-    return "clay-inset px-3 py-1 rounded-full text-[10px] tracking-widest uppercase font-bold text-muted-foreground";
+    const base = "px-3 py-1 rounded-[20px] text-[10px] tracking-wider uppercase font-bold font-mono border transition-all duration-300";
+    if (idx < phase) return `${base} border-border/50 text-muted-foreground/30 line-through`;
+    if (idx === phase) return `${base} border-primary text-primary bg-primary/10`;
+    return `${base} border-border text-muted-foreground`;
   };
 
   // Use displayRoot for rendering (shows intermediate states), fall back to root
