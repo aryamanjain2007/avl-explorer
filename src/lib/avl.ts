@@ -172,11 +172,29 @@ export function seedTree(size: number): AVLNode | null {
 
 // Raw insert without balancing (for quiz rotation questions)
 export function rawInsert(n: AVLNode | null, v: number): AVLNode {
-  if (!n) return createNode(v);
+  if (!n) {
+    const nd = createNode(v);
+    nd.state = 'new';
+    return nd;
+  }
   if (v < n.v) n.l = rawInsert(n.l, v);
-  else n.r = rawInsert(n.r, v);
+  else if (v > n.v) n.r = rawInsert(n.r, v);
   upH(n);
   return n;
+}
+
+export function markUnbalanced(n: AVLNode | null): void {
+  if (!n) return;
+  markUnbalanced(n.l);
+  markUnbalanced(n.r);
+  if (Math.abs(bf(n)) > 1) n.state = 'bad';
+}
+
+export function markNewPurple(n: AVLNode | null, val: number): void {
+  if (!n) return;
+  if (n.v === val && n.state === 'normal') n.state = 'new';
+  markNewPurple(n.l, val);
+  markNewPurple(n.r, val);
 }
 
 export function shuffle<T>(a: T[]): T[] {
