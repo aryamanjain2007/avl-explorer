@@ -365,12 +365,12 @@ export default function LearnMode() {
         {/* What's Happening */}
         <div className="clay-card p-5">
           <p className="text-[10px] tracking-widest uppercase font-bold text-muted-foreground mb-3">What's Happening</p>
-          <div className="flex gap-2 mb-3 flex-wrap">
+          <div className="flex gap-2 mb-4 flex-wrap">
             <span className={pillClass(1)}>1 · Insert</span>
             <span className={pillClass(2)}>2 · Check BF</span>
             <span className={pillClass(3)}>3 · Rotate</span>
           </div>
-          <p className="text-sm text-foreground leading-relaxed min-h-[42px]">{status}</p>
+          <p className="text-sm text-foreground leading-relaxed min-h-[42px] font-mono">{status}</p>
         </div>
 
         {/* Tree Stats */}
